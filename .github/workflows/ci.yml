@@ -9,6 +9,8 @@ jobs:
   ci:
     name: "Run Tests (${{ matrix.label }})"
     runs-on: self-hosted
+    env:
+      ImageOs: ubuntu20
     strategy:
       fail-fast: false
       matrix:
@@ -23,6 +25,8 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby_version }}
           bundler-cache: true
+        env:
+          ImageOs: ubuntu20
       - name: Run Minitest based tests
         run: bash script/test
       - name: Run Cucumber based tests
